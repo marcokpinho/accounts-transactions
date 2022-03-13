@@ -38,7 +38,7 @@ public class TransactionService {
         transaction.setOperationType(OperationType.fromValue(createTransactionDTO.getOperationTypeId()));
 
         if (transaction.getOperationType().getIsPayment()) {
-            transaction.setAmount(createTransactionDTO.getAmount().multiply(BigDecimal.valueOf(-1)));
+            transaction.setAmount(createTransactionDTO.getAmount().negate());
         } else {
             transaction.setAmount(createTransactionDTO.getAmount());
         }
