@@ -19,6 +19,10 @@ public class AccountService {
     }
 
     public AccountDTO save(CreateAccountDTO createAccountDTO) {
+        var account = accountRepository.findByDocumentNumber(createAccountDTO.getDocumentNumber());
+        if (account.isPresent()) {
+            throw new IllegalArgumentException(String.format("Já existe uma conta para o número de documento %s", createAccountDTO.getDocumentNumber()));
+        }
         return accountRepository.save(createAccountDTO.toDomain()).toDto();
     }
 

@@ -5,9 +5,9 @@ import java.time.LocalDateTime;
 
 public class TransactionDTO {
 
-    private long transactionId;
-    private long accountId;
-    private long operationTypeId;
+    private Long transactionId;
+    private Long accountId;
+    private Long operationTypeId;
     private BigDecimal amount;
     private LocalDateTime eventDate;
 
@@ -28,11 +28,11 @@ public class TransactionDTO {
         this.accountId = accountId;
     }
 
-    public long getOperationTypeId() {
+    public Long getOperationTypeId() {
         return operationTypeId;
     }
 
-    public void setOperationTypeId(long operationTypeId) {
+    public void setOperationTypeId(Long operationTypeId) {
         this.operationTypeId = operationTypeId;
     }
 

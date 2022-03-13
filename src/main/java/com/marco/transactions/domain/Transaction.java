@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -18,10 +20,12 @@ public class Transaction {
     private long transactionId;
 
     @NotNull
-    private long accountId;
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
 
     @NotNull
-    private long operationTypeId;
+    private OperationType operationType;
 
     @NotNull
     private BigDecimal amount;
@@ -37,20 +41,20 @@ public class Transaction {
         this.transactionId = transactionId;
     }
 
-    public long getAccountId() {
-        return accountId;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setAccountId(long accountId) {
-        this.accountId = accountId;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
-    public long getOperationTypeId() {
-        return operationTypeId;
+    public OperationType getOperationType() {
+        return operationType;
     }
 
-    public void setOperationTypeId(long operationTypeId) {
-        this.operationTypeId = operationTypeId;
+    public void setOperationType(OperationType operationType) {
+        this.operationType = operationType;
     }
 
     public BigDecimal getAmount() {
@@ -72,8 +76,8 @@ public class Transaction {
     public TransactionDTO toDto() {
         var dto = new TransactionDTO();
         dto.setTransactionId(this.getTransactionId());
-        dto.setAccountId(this.getAccountId());
-        dto.setOperationTypeId(this.getOperationTypeId());
+        dto.setAccountId(this.getAccount().getAccountId());
+        dto.setOperationTypeId(this.getOperationType().getOperationTypeId());
         dto.setAmount(this.getAmount());
         dto.setEventDate(this.getEventDate());
         return dto;

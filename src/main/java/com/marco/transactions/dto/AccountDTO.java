@@ -1,6 +1,5 @@
 package com.marco.transactions.dto;
 
-
 import com.marco.transactions.domain.Account;
 
 public class AccountDTO {

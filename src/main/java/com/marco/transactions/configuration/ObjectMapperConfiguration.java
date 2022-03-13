@@ -14,6 +14,6 @@ public class ObjectMapperConfiguration {
     public Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder() {
         return new Jackson2ObjectMapperBuilder()
                 .propertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
-                .dateFormat(new SimpleDateFormat("dd-MM-yyyy hh:mm:ss"));
+                .dateFormat(new SimpleDateFormat());
     }
 }

@@ -1,14 +1,16 @@
 package com.marco.transactions.dto;
 
-import com.marco.transactions.domain.Transaction;
-
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 public class CreateTransactionDTO {
 
+    @NotNull
     private Long accountId;
+    @NotNull
     private Long operationTypeId;
+    @Positive
     private BigDecimal amount;
 
     public Long getAccountId() {
@@ -23,7 +25,7 @@ public class CreateTransactionDTO {
         return operationTypeId;
     }
 
-    public void setOperationTypeId(Long operationTypeId) {
+    public void setOperationType(Long operationTypeId) {
         this.operationTypeId = operationTypeId;
     }
 
@@ -33,14 +35,5 @@ public class CreateTransactionDTO {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
-    }
-
-    public Transaction toDomain() {
-        var transaction = new Transaction();
-        transaction.setAccountId(this.getAccountId());
-        transaction.setOperationTypeId(this.getOperationTypeId());
-        transaction.setAmount(this.getAmount());
-        transaction.setEventDate(LocalDateTime.now());
-        return transaction;
     }
 }

@@ -1,17 +1,28 @@
 package com.marco.transactions.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import java.util.stream.Stream;
 
-@Entity
-public class OperationType {
+public enum OperationType {
+    COMPRA_A_VISTA(1, false),
+    COMPRA_PARCELADA(2, false),
+    SAQUE(3, false),
+    PAGAMENTO(4, true);
 
-    @Id
+    OperationType(long operationTypeId, Boolean isPayment) {
+        this.operationTypeId = operationTypeId;
+        this.isPayment = isPayment;
+    }
+
     private long operationTypeId;
+    private Boolean isPayment;
 
-    @NotNull
-    private String description;
+    public static OperationType fromValue(long id) {
+        return Stream.of(OperationType.values())
+                .filter(operationType -> operationType.operationTypeId == id)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(String.format("Não existe um tipo de operação com id %d", id)));
+    }
+
 
     public long getOperationTypeId() {
         return operationTypeId;
@@ -21,11 +32,11 @@ public class OperationType {
         this.operationTypeId = operationTypeId;
     }
 
-    public String getDescription() {
-        return description;
+    public Boolean getIsPayment() {
+        return isPayment;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setIsPayment(Boolean isPayment) {
+        this.isPayment = isPayment;
     }
 }

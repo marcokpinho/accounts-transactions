@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/transactions")
 public class TransactionController {
@@ -19,7 +21,7 @@ public class TransactionController {
     }
 
     @PostMapping
-    public TransactionDTO createTransaction(@RequestBody CreateTransactionDTO createTransactionDTO) {
+    public TransactionDTO createTransaction(@Valid @RequestBody CreateTransactionDTO createTransactionDTO) {
         return transactionService.save(createTransactionDTO);
     }
 }
