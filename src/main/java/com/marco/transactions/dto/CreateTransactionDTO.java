@@ -25,7 +25,7 @@ public class CreateTransactionDTO {
         return operationTypeId;
     }
 
-    public void setOperationType(Long operationTypeId) {
+    public void setOperationTypeId(Long operationTypeId) {
         this.operationTypeId = operationTypeId;
     }
 

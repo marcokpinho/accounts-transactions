@@ -9,7 +9,6 @@ import com.marco.transactions.repository.AccountRepository;
 import com.marco.transactions.repository.TransactionRepository;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Service
