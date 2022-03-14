@@ -37,9 +37,9 @@ public class TransactionService {
         transaction.setOperationType(OperationType.fromValue(createTransactionDTO.getOperationTypeId()));
 
         if (transaction.getOperationType().getIsPayment()) {
-            transaction.setAmount(createTransactionDTO.getAmount().negate());
-        } else {
             transaction.setAmount(createTransactionDTO.getAmount());
+        } else {
+            transaction.setAmount(createTransactionDTO.getAmount().negate());
         }
         transaction.setEventDate(LocalDateTime.now());
         return transaction;

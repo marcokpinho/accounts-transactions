@@ -82,7 +82,7 @@ public class TransactionServiceTest {
 
         assertEquals(account.getAccountId(), transactionDTO.getAccountId());
         assertEquals(createTransactionDTO.getOperationTypeId(), transactionDTO.getOperationTypeId());
-        assertEquals(createTransactionDTO.getAmount(), transactionDTO.getAmount());
+        assertEquals(createTransactionDTO.getAmount().negate(), transactionDTO.getAmount());
         assertEquals(LocalDate.now(), transactionDTO.getEventDate().toLocalDate());
 
         verify(accountRepository).findById(createTransactionDTO.getAccountId());
@@ -106,7 +106,7 @@ public class TransactionServiceTest {
 
         assertEquals(account.getAccountId(), transactionDTO.getAccountId());
         assertEquals(createTransactionDTO.getOperationTypeId(), transactionDTO.getOperationTypeId());
-        assertEquals(createTransactionDTO.getAmount().negate(), transactionDTO.getAmount());
+        assertEquals(createTransactionDTO.getAmount(), transactionDTO.getAmount());
         assertEquals(LocalDate.now(), transactionDTO.getEventDate().toLocalDate());
 
         verify(accountRepository).findById(createTransactionDTO.getAccountId());
