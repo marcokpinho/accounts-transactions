@@ -3,6 +3,7 @@ package com.marco.transactions.controller;
 import com.marco.transactions.dto.CreateTransactionDTO;
 import com.marco.transactions.dto.TransactionDTO;
 import com.marco.transactions.service.TransactionService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
+    @ApiOperation(value = "Create new transaction")
     @PostMapping
     public TransactionDTO createTransaction(@Valid @RequestBody CreateTransactionDTO createTransactionDTO) {
         return transactionService.save(createTransactionDTO);

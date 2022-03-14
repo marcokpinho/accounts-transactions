@@ -37,3 +37,7 @@ curl -X POST \
     "amount": 50.45
 }'
 ```
+
+## Swagger
+
+Também é possível realizar os testes dos endpoints pelo swagger, acessando o link http://localhost:8080/swagger-ui.html
