@@ -6,11 +6,11 @@ import java.math.BigDecimal;
 
 public class CreateTransactionDTO {
 
-    @NotNull
+    @NotNull(message = "Necessário informar account_id")
     private Long accountId;
-    @NotNull
+    @NotNull(message = "Necessário informar operation_type_id")
     private Long operationTypeId;
-    @Positive
+    @Positive(message = "Amount deve ser maior que zero")
     private BigDecimal amount;
 
     public Long getAccountId() {

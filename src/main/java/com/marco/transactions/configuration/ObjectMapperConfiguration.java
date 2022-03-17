@@ -1,5 +1,6 @@
 package com.marco.transactions.configuration;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,7 @@ public class ObjectMapperConfiguration {
     public Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder() {
         return new Jackson2ObjectMapperBuilder()
                 .propertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
-                .dateFormat(new SimpleDateFormat());
+                .dateFormat(new SimpleDateFormat())
+                .serializationInclusion(JsonInclude.Include.NON_NULL);
     }
 }

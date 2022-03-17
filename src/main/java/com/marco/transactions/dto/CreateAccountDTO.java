@@ -2,11 +2,11 @@ package com.marco.transactions.dto;
 
 import com.marco.transactions.domain.Account;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 public class CreateAccountDTO {
 
-    @NotNull
+    @NotBlank(message = "Necessário informar document_number")
     private String documentNumber;
 
     public String getDocumentNumber() {
