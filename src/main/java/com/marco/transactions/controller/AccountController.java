@@ -2,6 +2,7 @@ package com.marco.transactions.controller;
 
 import com.marco.transactions.dto.AccountDTO;
 import com.marco.transactions.dto.CreateAccountDTO;
+import com.marco.transactions.exceptions.NotFoundException;
 import com.marco.transactions.service.AccountService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
@@ -33,10 +34,11 @@ public class AccountController {
 
     @ApiOperation(value = "Get account by id")
     @GetMapping("/{accountId}")
-    public ResponseEntity<AccountDTO> getAccount(@PathVariable("accountId") long accountId) {
+    public AccountDTO getAccount(@PathVariable("accountId") long accountId) throws NotFoundException {
 
         var accountDto = accountService.findById(accountId);
 
-        return accountDto.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        return accountDto.orElseThrow(
+                () -> new NotFoundException(String.format("Não foi possível encontrar uma conta com id %d", accountId)));
     }
 }
