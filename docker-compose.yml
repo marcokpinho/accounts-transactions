@@ -19,6 +19,7 @@ services:
   app:
     build: .
     container_name: app
+    platform: linux/amd64
     depends_on:
       db:
         condition: service_healthy

@@ -1,12 +1,20 @@
 # accounts-transactions
 
+## Requimentos
+
+* Java 11 configurado
+* Gradle 6.8+
+ ---
 ## Execução
 
-É possível executar a aplicação de duas maneiras. Basta abrir o terminal na raíz do projeto e executar um dos comandos:
-* `./gradlew clean build bootRun`: Irá executar a aplicação via gradle, utilizando um banco de dados em memória (H2).
-* `docker-compose up`: Irá subir container para um banco de dados postgres e outro container para a aplicação.
+Para subir a aplicação, basta abrir o terminal na raíz do projeto e seguir os seguintes passos:
 
+1) `gradle build`
+2) Escolhe uma das opções
+    1) Subir a aplicação via gradle com banco de dados em memória (H2): `gradle bootRun`
+    2) Subir a aplicação e um banco de dados Postgres via docker: `docker-compose up`
 
+---
 ## Endpoints
 
 Segue algumas curls para  ajudar nos testes:
@@ -37,7 +45,7 @@ curl -X POST \
     "amount": 50.45
 }'
 ```
-
+---
 ## Swagger
 
 Também é possível realizar os testes dos endpoints pelo swagger, acessando o link http://localhost:8080/swagger-ui.html
